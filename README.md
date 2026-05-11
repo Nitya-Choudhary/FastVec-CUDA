@@ -1,38 +1,44 @@
 # FastVec-CUDA 🚀
 
-A high-performance Vector Math library that offloads heavy calculations from Python to an NVIDIA GPU using CUDA C++.
+A high-performance Python library that offloads vector operations to the GPU using custom CUDA C++ kernels — achieving up to **3100x speedup** over pure Python.
 
-## 💡 Why this exists
-Standard Python loops are slow for large datasets. This project demonstrates how to bridge the gap between Python's ease of use and CUDA's parallel processing power to achieve near-instant results on a laptop GPU.
+Built with CUDA C++, Pybind11, and PyTorch Extensions.
 
-## 🛠️ Tech Stack
-- **Language:** Python & CUDA C++
-- **NVIDIA Tech:** CUDA Toolkit, NVCC, Tensor Cores
-- **Bindings:** Pybind11 / Torch Extensions
-- **Environment:** Windows (WSL2 Ubuntu)
+---
 
-## 📊 Performance Benchmark
-Tested on: **Asus Vivobook (NVIDIA RTX GPU)**
-Vector Size: 10,000,000 elements
+## 💡 Why FastVec?
 
-| Method | Execution Time | Speedup |
-| :--- | :--- | :--- |
-| Python Loop | ~2.5 seconds | 1x (Baseline) |
+Standard Python loops are painfully slow for large-scale numerical computation. FastVec bridges Python's ease of use with CUDA's parallel processing power — letting you run vector math on millions of elements in under a millisecond.
+
+| Method | Time (10M elements) | Speedup |
+|---|---|---|
+| Python Loop | ~2.5 seconds | 1x (baseline) |
 | NumPy (CPU) | ~15 ms | 160x |
 | **FastVec (GPU)** | **~0.8 ms** | **3100x** |
 
-## 🚀 Getting Started
+> Tested on: Asus Vivobook with NVIDIA RTX GPU
 
-### Prerequisites
-- NVIDIA Driver installed
-- CUDA Toolkit 12.x
-- Python 3.10+
+---
 
-### Installation
-```bash
-# Clone the repository
-git clone [https://github.com/YourUsername/FastVec.git](https://github.com/YourUsername/FastVec.git)
-cd FastVec
+## ✨ Features
 
-# Build and install the module
-pip install .
+- **Vector Addition** — element-wise `a + b` on GPU
+- **Element-wise Multiplication** — `a * b` in parallel
+- **Scalar Scaling** — multiply every element by a scalar
+- **Dot Product** — GPU reduction with shared memory
+- **Matrix Multiplication** — via PyTorch CUDA backend
+- **Benchmarking** — built-in throughput tester
+- **CPU Fallback** — works even without a GPU
+
+---
+
+## 🛠️ Tech Stack
+
+- **Languages:** Python & CUDA C++
+- **NVIDIA:** CUDA Toolkit 12.x, NVCC
+- **Bindings:** Pybind11 / PyTorch `cpp_extension`
+- **Environment:** Windows (WSL2 Ubuntu)
+
+---
+
+## 📁 Project Structure
